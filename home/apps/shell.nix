@@ -40,6 +40,23 @@
       default = false;
     };
 
+    tvr.home.shell.git.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+    tvr.home.shell.git.lazygit = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+    tvr.home.shell.git.userName = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+    };
+    tvr.home.shell.git.userEmail = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+    };
+
   };
 
   config = {
@@ -138,6 +155,31 @@
           {
             enable = false;
           }
+      );
+
+      git = (
+        if config.tvr.home.shell.git.enable then
+          {
+            enable = true;
+            settings = {
+              user = {
+                name = config.tvr.home.shell.git.userName;
+                email = config.tvr.home.shell.git.userEmail;
+              };
+              init.defaultBranch = "main";
+              merge.ours.driver = true;
+            };
+          }
+        else
+          {
+            enable = false;
+          }
+      );
+      lazygit.enable = (
+        if config.tvr.home.shell.git.enable == true && config.tvr.home.shell.git.lazygit == true then
+          true
+        else
+          false
       );
 
     };

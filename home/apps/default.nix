@@ -9,9 +9,9 @@
   imports = [
     ./creds
     ./firefox
-    ./git.nix
     ./shell.nix
-    ./zed.nix
+    ./dev.nix
+
   ];
 
   options = {
