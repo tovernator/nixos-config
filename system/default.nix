@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -15,7 +16,7 @@
     ./fonts.nix
     ./locale.nix
     ./network.nix
-    ./power.nix
+    ./security.nix
     ./udev.nix
   ];
 

@@ -19,7 +19,7 @@
 
       setup_wizard_enable = false;
       niri_overview_type_to_launch_enable = true;
-      greeter_sync.auto_sync = true;
+      greeter_sync.auto_sync = false;
       polkit_agent = true;
       session.grid = true;
       launcher.app_grid = true;

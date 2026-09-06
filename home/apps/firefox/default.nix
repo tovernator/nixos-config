@@ -8,6 +8,7 @@
 {
   imports = [
     ./extensions.nix
+    ./search.nix
   ];
 
   options = {
@@ -69,6 +70,7 @@
                 "Perplexity"
                 "Qwant"
                 "Startpage"
+                "Wikipedia"
               ];
             };
             # Extensions

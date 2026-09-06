@@ -13,7 +13,7 @@
   options = {
     tvr.home.apps.firefox.ublock = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
     };
   };
 

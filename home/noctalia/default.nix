@@ -23,12 +23,15 @@
 
   config = {
 
-    programs = {
-      noctalia.enable = true;
-      noctalia.package = pkgs.noctalia;
+    programs.noctalia = {
+      enable = true;
+      package = pkgs.noctalia;
+
     };
 
-    home.packages = with pkgs; [ noctalia ];
+    home.packages = with pkgs; [noctalia];
+
+
   };
 
 }

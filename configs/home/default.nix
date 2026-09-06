@@ -35,6 +35,9 @@
     tvr.home.apps.zed-editor.enable = true;
 
     tvr.home.apps.firefox.enable = true;
+    tvr.home.apps.firefox.nixSearch = true;
+    tvr.home.apps.discord.enable = true;
+
     tvr.home.apps.creds.enable = true;
 
     # config.tvr.home.shell.bat = true;

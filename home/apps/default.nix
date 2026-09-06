@@ -12,6 +12,8 @@
     ./shell.nix
     ./dev.nix
 
+    ./social.nix
+
   ];
 
   options = {

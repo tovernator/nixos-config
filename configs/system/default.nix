@@ -31,6 +31,7 @@
         "networkmanager"
         "wheel"
         "video"
+
       ];
     };
   };
