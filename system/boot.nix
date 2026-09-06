@@ -1,19 +1,37 @@
 {
+  config,
+  lib,
+  pkgs,
   ...
 }:
+
 {
-  boot.loader = {
+  imports = [
 
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
+  ];
+
+  options = {
+    tvr.system.boot.enableDualBoot = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
     };
-
-    grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
-    };
-
   };
+
+  config = {
+    boot.loader = {
+
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+
+      grub = {
+        enable = true;
+        efiSupport = true;
+        useOSProber = config.tvr.system.boot.enableDualBoot;
+        device = "nodev";
+      };
+    };
+  };
+
 }

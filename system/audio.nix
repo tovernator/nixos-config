@@ -1,22 +1,41 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
+
 {
-  services = {
+  imports = [
 
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      jack.enable = true;
+  ];
+
+  options = {
+    tvr.system.audio.alsa.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
     };
-
-    pulseaudio.enable = false;
-
+    tvr.system.audio.pulse.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+    };
+    tvr.system.audio.jack.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+    };
   };
 
-  environment.systemPackages = with pkgs; [ pulseaudio ];
-
+  config = {
+    services = {
+      pipewire = {
+        enable = true;
+        alsa.enable = config.tvr.system.audio.alsa.enable;
+        alsa.support32Bit = true;
+        pulse.enable = config.tvr.system.audio.pulse.enable;
+        jack.enable = config.tvr.system.audio.jack.enable;
+      };
+      pulseaudio.enable = false;
+    };
+    environment.systemPackages = with pkgs; [ pulseaudio ];
+  };
 }
