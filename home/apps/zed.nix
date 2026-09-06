@@ -16,6 +16,10 @@
       type = lib.types.bool;
       default = false;
     };
+    tvr.home.apps.zed-editor.extensions = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+    };
   };
 
   config = {
@@ -23,7 +27,7 @@
       if config.tvr.home.apps.zed-editor.enable then
         {
           enable = true;
-          extensions = [ ] ++ (if config.tvr.home.dev.nix.enable then [ "nix" ] else [ ]);
+          extensions = [ ] ++ (if config.tvr.home.dev.nix.enable then [ "nix" ] else [ ]) ++ config.tvr.home.apps.zed-editor.extensions ;
           userSettings = {
             theme = {
               mode = "system";
