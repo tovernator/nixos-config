@@ -7,10 +7,11 @@
 
 {
   imports = [
-    ./apps
-    ./dev
-    ./niri
-    ./noctalia
+    ./creds
+    ./firefox
+    ./git.nix
+    ./shell.nix
+    ./zed.nix
   ];
 
   options = {

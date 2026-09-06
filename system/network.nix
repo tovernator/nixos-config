@@ -1,9 +1,24 @@
 {
+  config,
+  lib,
+  pkgs,
   ...
 }:
+
 {
-  hardware.bluetooth.enable = true;
-  networking.wireless.iwd.enable = true;
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
+  imports = [
+
+  ];
+
+  options = {
+
+  };
+
+  config = {
+    hardware.bluetooth.enable = true;
+    networking.wireless.iwd.enable = true;
+    networking.networkmanager.enable = true;
+    networking.networkmanager.wifi.backend = "iwd";
+  };
+
 }
