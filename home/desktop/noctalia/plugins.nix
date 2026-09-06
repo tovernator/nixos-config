@@ -35,16 +35,22 @@
 
     "kenn/keybind-cheatsheet" = {
       cheatsheet_open_near_click = false;
-      cheatsheet_placement = "attached";
+      cheatsheet_placement = "floating";
     };
 
+    "noctalia/wallhaven" = {
+      browser_placement = "floating";
+    };
     "raycursive/niri-displays" = {
+      panel_placement = "floating";
+      panel_position = "follow_bar";
       panel_open_near_click = false;
     };
 
     "weinguyen/procmon" = {
       panel_open_near_click = false;
-      panel_placement = "attached";
+      panel_placement = "floating";
+      panel_position = "auto";
     };
 
     "blackbartblues/audio-switcher" = {

@@ -22,8 +22,8 @@
       clipboard_placement = "attached";
       open_near_click_clipboard = false;
 
-      wallpaper_placement = "attached";
-      open_near_click_wallpaper = false;
+      wallpaper_placement = "floating";
+      wallpaper_position = "follow_bar";
     };
 
   };
