@@ -12,20 +12,18 @@
     launcher.app_grid = true;
 
     panel = {
-      clipboard_position = "auto";
 
-      control_center_placement = "floating";
+      control_center_placement = "attached";
+      open_near_click_control_center = false;
 
       launcher_placement = "attached";
-      launcher_position = "auto";
+      polkit_placement = "attached";
 
-      open_near_click_clipboard = true;
-      open_near_click_control_center = true;
-      open_near_click_wallpaper = true;
-
-      polkit_position = "auto";
+      clipboard_placement = "attached";
+      open_near_click_clipboard = false;
 
       wallpaper_placement = "attached";
+      open_near_click_wallpaper = false;
     };
 
   };

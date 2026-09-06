@@ -17,6 +17,9 @@
 
   programs = {
     noctalia.enable = true;
+    noctalia.package = pkgs.noctalia;
   };
+
+  home.packages = with pkgs; [noctalia];
 
 }

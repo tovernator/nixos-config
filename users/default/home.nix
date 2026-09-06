@@ -3,7 +3,7 @@
   imports = [
     ../../home
     ../../modules/home/firefox
-    ../../modules/home/git
+    ../../modules/home/dev
   ];
 
   home.username = "${defaultUsername}";

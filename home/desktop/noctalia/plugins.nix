@@ -2,49 +2,54 @@
   ...
 }:
 {
-  programs.noctalia.settings = {
+  programs.noctalia.settings.plugins.source = [
+    {
+      name = "official";
+      kind = "git";
+      location = "https://github.com/noctalia-dev/official-plugins";
+      enabled = true;
+      auto_update = true;
+    }
 
-    source = [
-      {
-        name = "official";
-        kind = "git";
-        location = "https://github.com/noctalia-dev/official-plugins";
-        enabled = true;
-        auto_update = true;
-      }
+    {
+      name = "community";
+      kind = "git";
+      location = "https://github.com/noctalia-dev/community-plugins";
+      enabled = true;
+      auto_update = true;
+    }
+  ];
 
-      {
-        name = "community";
-        kind = "git";
-        location = "https://github.com/noctalia-dev/community-plugins";
-        enabled = true;
-        auto_update = true;
-      }
-    ];
-
+  programs.noctalia.settings.plugins = {
     enabled = [
       "noctalia/wallhaven"
       "kenn/keybind-cheatsheet"
       "weinguyen/procmon"
       "raycursive/niri-displays"
-      "piero-93/battery-power-management"
       "blackbartblues/audio-switcher"
     ];
 
-    plugin_settings = {
+  };
 
-      "kenn/keybind-cheatsheet" = {
-        cheatsheet_position = "auto";
-      };
+  programs.noctalia.settings.plugin_settings = {
 
-      "blackbartblues/audio-switcher" = {
-        show_percentage = false;
-      };
+    "kenn/keybind-cheatsheet" = {
+      cheatsheet_open_near_click = false;
+      cheatsheet_placement = "attached";
+    };
 
-      "piero-93/battery-power-management" = {
-        show_balanced_icon = true;
-      };
+    "raycursive/niri-displays" = {
+      panel_open_near_click = false;
+    };
 
+    "weinguyen/procmon" = {
+      panel_open_near_click = false;
+      panel_placement = "attached";
+    };
+
+    "blackbartblues/audio-switcher" = {
+      show_percentage = false;
+      audio-switcher_open_near_click = false;
     };
 
   };
