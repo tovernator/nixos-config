@@ -1,0 +1,8 @@
+{
+  ...
+}:
+{
+  programs.noctalia.settings = {
+
+  };
+}

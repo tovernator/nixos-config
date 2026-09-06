@@ -1,0 +1,4 @@
+switch-events {
+	lid-close {spawn "noctalia" "msg" "dpms-off"; }
+	lid-open {spawn "noctalia" "msg" "dpms-on"; }	
+}

@@ -1,0 +1,77 @@
+binds {
+
+    // #"Applications"
+    Mod+T repeat=false         hotkey-overlay-title="Terminal"                { spawn "alacritty"; }
+    Mod+Return repeat=false   hotkey-overlay-title="Appliction Launcher"     { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Comma repeat=false          hotkey-overlay-title="Settings"                { spawn-sh "noctalia msg settings-toggle"; }
+    Mod+B repeat=false              hotkey-overlay-title="Firefox"                 { spawn-sh "firefox --new-window"; }
+    Mod+Shift+B repeat=false        hotkey-overlay-title="Firefox Private Window"  { spawn-sh "firefox --private-window"; }
+    Mod+E repeat=false              hotkey-overlay-title="File Explorer"           { spawn "nautilus"; }
+    Mod+H repeat=false              hotkey-overlay-title="Hotkey Cheatsheet"       { spawn-sh  "noctalia msg panel-toggle kenn/keybind-cheatsheet:cheatsheet"; }    
+    Mod+P repeat=false              hotkey-overlay-title="Package Manager"         { spawn "shelly-ui"; }
+
+    // #"Media"
+    Mod+S repeat=false              hotkey-overlay-title="Screen Toolkit"          { spawn-sh "noctalia msg panel-toggle alexander/screen-toolkit:panel-full"; }
+    XF86AudioRaiseVolume            hotkey-overlay-title="Volume Up"               { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume            hotkey-overlay-title="Volume Down"             { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute                   hotkey-overlay-title="Mute Audio"              { spawn-sh "noctalia msg volume-mute"; }
+    XF86MonBrightnessUp             hotkey-overlay-title="Brightness Up"           { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown           hotkey-overlay-title="Brightness Down"         { spawn-sh "noctalia msg brightness-down"; }
+
+    // #"Window Management"
+    Mod+Minus                       hotkey-overlay-title="Decrease window width by a quarter"               { switch-preset-column-width-back; }
+    Mod+Equal                       hotkey-overlay-title="Increase window width by a quarter" { switch-preset-column-width; }
+    Mod+M repeat=false              hotkey-overlay-title="Maximize window" { maximize-column; }
+    Mod+F repeat=false              hotkey-overlay-title="Fullscreen" { fullscreen-window; }
+    Mod+Q repeat=false              hotkey-overlay-title="Close window" { close-window; }
+
+    Mod+Shift+Up                    hotkey-overlay-title="Move window to workspace above" { move-window-to-workspace-up; }
+    Mod+Shift+Down                  hotkey-overlay-title="Move window to workspace below" { move-window-to-workspace-down; }
+    Mod+Shift+Left                  hotkey-overlay-title="Move window to the left" { move-column-left; }
+    Mod+Shift+Right                 hotkey-overlay-title="Move window to the right" { move-column-right; }
+    Mod+Left                        hotkey-overlay-title="Focus left window" { focus-column-left; }
+    Mod+Right                       hotkey-overlay-title="Focus right window" { focus-column-right; }
+    Mod+WheelScrollLeft             hotkey-overlay-title="Focus left window"  { focus-column-left; }
+    Mod+WheelScrollRight                hotkey-overlay-title="Focus right window"  { focus-column-right; }
+
+    Mod+Shift+1                     hotkey-overlay-title="Move window to workspace 1" { move-column-to-workspace 1; }
+    Mod+Shift+2                     hotkey-overlay-title="Move window to workspace 2" { move-column-to-workspace 2; }
+    Mod+Shift+3                     hotkey-overlay-title="Move window to workspace 3" { move-column-to-workspace 3; }
+    Mod+Shift+4                     hotkey-overlay-title="Move window to workspace 4" { move-column-to-workspace 4; }
+    Mod+Shift+5                     hotkey-overlay-title="Move window to workspace 5" { move-column-to-workspace 5; }
+    Mod+Shift+6                     hotkey-overlay-title="Move window to workspace 6" { move-column-to-workspace 6; }
+    Mod+Shift+7                     hotkey-overlay-title="Move window to workspace 7" { move-column-to-workspace 7; }
+    Mod+Shift+8                     hotkey-overlay-title="Move window to workspace 8" { move-column-to-workspace 8; }
+    Mod+Shift+9                     hotkey-overlay-title="Move window to workspace 9" { move-column-to-workspace 9; }
+
+
+    // #"Workspace Management"
+    Mod+Tab         hotkey-overlay-title="Focus previous workspace" { focus-workspace-previous; }
+
+    Mod+1           hotkey-overlay-title="Focus workspace 1" { focus-workspace 1; }
+    Mod+2           hotkey-overlay-title="Focus workspace 2" { focus-workspace 2; }
+    Mod+3           hotkey-overlay-title="Focus workspace 3" { focus-workspace 3; }
+    Mod+4           hotkey-overlay-title="Focus workspace 4" { focus-workspace 4; }
+    Mod+5           hotkey-overlay-title="Focus workspace 5" { focus-workspace 5; }
+    Mod+6           hotkey-overlay-title="Focus workspace 6" { focus-workspace 6; }
+    Mod+7           hotkey-overlay-title="Focus workspace 7" { focus-workspace 7; }
+    Mod+8           hotkey-overlay-title="Focus workspace 8" { focus-workspace 8; }
+    Mod+9           hotkey-overlay-title="Focus workspace 9" { focus-workspace 9; }
+
+    Mod+Up          hotkey-overlay-title="Focus workspace above" { focus-workspace-up; }
+    Mod+Down        hotkey-overlay-title="Volume workspace below" { focus-workspace-down; }
+
+
+    Mod+WheelScrollDown cooldown-ms=150  hotkey-overlay-title="Focus workspace above" { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150  hotkey-overlay-title="Focus workspace above" { focus-workspace-up; }
+
+
+
+
+
+    // #"Monitor Management"
+    Mod+Ctrl+Up hotkey-overlay-title="Move workspace to monitor above" { move-workspace-to-monitor-up; }
+    Mod+Ctrl+Down hotkey-overlay-title="Move workspace to monitor below" { move-workspace-to-monitor-down; }
+    Mod+Ctrl+Left hotkey-overlay-title="Move workspace to left monitor" { move-workspace-to-monitor-left; }
+    Mod+Ctrl+Right hotkey-overlay-title="Focus workspace to right monitor" { move-workspace-to-monitor-right; }
+}
