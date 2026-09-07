@@ -23,25 +23,29 @@
     home.homeDirectory = "/home/${defaultUsername}";
     xdg.userDirs.enable = true;
 
-    tvr.home.shell.fish.enable = true;
-    tvr.home.shell.helix.enable = true;
-    tvr.home.shell.starship.enable = true;
-    tvr.home.shell.zellij.enable = true;
-    tvr.home.shell.git.enable = true;
-    tvr.home.shell.git.userName = gitUser;
-    tvr.home.shell.git.userEmail = gitEmail;
-    tvr.home.shell.git.lazygit = true;
+    tvr.shell.fish.enable = true;
+    tvr.shell.helix.enable = true;
+    tvr.shell.starship.enable = true;
+    tvr.shell.zellij.enable = true;
 
-    tvr.home.apps.zed-editor.enable = true;
+    tvr.shell.git.enable = true;
+    tvr.shell.git.userName = gitUser;
+    tvr.shell.git.userEmail = gitEmail;
+    tvr.shell.git.enableLazyGit = true;
 
-    tvr.home.apps.firefox.enable = true;
-    tvr.home.apps.firefox.nixSearch = true;
-    tvr.home.apps.discord.enable = true;
+    tvr.apps.zed.enable = true;
+    tvr.apps.alacritty.enable = true;
+    tvr.apps.firefox.enable = true;
+    tvr.apps.firefox.enableNixSearch = true;
+    tvr.apps.udiskie.enable = true;
+    tvr.apps.discord.enable = true;
 
-    tvr.home.apps.creds.enable = true;
+    tvr.apps.alacritty.useNoctaliaTheme = true;
+    tvr.shell.helix.useNoctaliaTheme = true;
+    tvr.shell.zellij.useNoctaliaTheme = true;
+    tvr.apps.zed.useNoctaliaTheme = true;
+    tvr.apps.discord.useNoctaliaTheme = true;
 
-    # config.tvr.home.shell.bat = true;
-    # config.tvr.home.shell.eza = true;
     home.stateVersion = stateVersion;
     programs.home-manager.enable = true;
   };

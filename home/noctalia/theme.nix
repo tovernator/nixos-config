@@ -31,14 +31,15 @@
           "gtk4"
           "qt"
         ]
-        ++ (if config.tvr.home.shell.helix.enable then [ "helix" ] else [ ])
-        ++ (if config.tvr.home.shell.starship.enable then [ "starship" ] else [ ]);
+        ++ (if config.tvr.shell.helix.enable then [ "helix" ] else [ ])
+        ++ (if config.tvr.shell.starship.enable then [ "starship" ] else [ ])
+        ++ (if config.tvr.apps.alacritty.enable then [ "alacritty" ] else [ ]);
         community_ids = [
         ]
-        ++ (if config.tvr.home.shell.zellij.enable then [ "zellij" ] else [ ])
-        ++ (if config.tvr.home.shell.bat.enable then [ "bat" ] else [ ])
-        ++ (if config.tvr.home.apps.zed-editor.enable then [ "zed" ] else [ ])
-        ++ (if config.tvr.home.apps.discord.enable then [ "discord" ] else [ ]);
+        ++ (if config.tvr.shell.zellij.enable then [ "zellij" ] else [ ])
+        ++ (if config.tvr.shell.bat.enable then [ "bat" ] else [ ])
+        ++ (if config.tvr.apps.zed.enable then [ "zed" ] else [ ])
+        ++ (if config.tvr.apps.discord.enable then [ "discord" ] else [ ]);
       };
 
     };

@@ -8,17 +8,13 @@
 {
   imports = [
     ./apps
-    ./dev
     ./niri
     ./noctalia
+    ./shell
   ];
 
-  options = {
+  options = { };
 
-  };
-
-  config = {
-
-  };
+  config = { };
 
 }

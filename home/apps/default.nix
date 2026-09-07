@@ -7,21 +7,17 @@
 
 {
   imports = [
-    ./creds
-    ./firefox
-    ./shell.nix
-    ./dev.nix
-
-    ./social.nix
-
+    ./alacritty.nix
+    ./discord.nix
+    ./firefox.nix
+    ./keepassxc.nix
+    ./rclone.nix
+    ./udiskie.nix
+    ./zed.nix
   ];
 
-  options = {
+  options = { };
 
-  };
-
-  config = {
-
-  };
+  config = { };
 
 }
