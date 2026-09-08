@@ -7,7 +7,7 @@
 
 with lib;
 let
-  cfg = config.tvr.apps.keepassxc;
+  cfg = config.tvr.app.rclone;
 in
 {
   imports = [
@@ -15,7 +15,7 @@ in
   ];
 
   options = {
-    tvr.apps.keepassxc = {
+    tvr.app.rclone = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -23,8 +23,8 @@ in
     };
   };
 
-  config = {
-    programs.keepassxc = { } // (if cfg.enable then { enable = true; } else { });
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ rclone ];
   };
 
 }

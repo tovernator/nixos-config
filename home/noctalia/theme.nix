@@ -33,13 +33,13 @@
         ]
         ++ (if config.tvr.shell.helix.enable then [ "helix" ] else [ ])
         ++ (if config.tvr.shell.starship.enable then [ "starship" ] else [ ])
-        ++ (if config.tvr.apps.alacritty.enable then [ "alacritty" ] else [ ]);
+        ++ (if config.tvr.app.alacritty.enable then [ "alacritty" ] else [ ]);
         community_ids = [
         ]
         ++ (if config.tvr.shell.zellij.enable then [ "zellij" ] else [ ])
         ++ (if config.tvr.shell.bat.enable then [ "bat" ] else [ ])
-        ++ (if config.tvr.apps.zed.enable then [ "zed" ] else [ ])
-        ++ (if config.tvr.apps.discord.enable then [ "discord" ] else [ ]);
+        ++ (if config.tvr.app.zed.enable then [ "zed" ] else [ ])
+        ++ (if config.tvr.app.discord.enable then [ "discord" ] else [ ]);
       };
 
     };

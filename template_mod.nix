@@ -7,13 +7,16 @@
 
 with lib;
 let
-  cfg = config.tvr.shell.eza;
+
+  cfg = config.TEMPLATE;
 in
 {
-  imports = [ ];
+  imports = [
+
+  ];
 
   options = {
-    tvr.shell.eza = {
+    TEMPLATE = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -22,10 +25,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.eza = {
-      enable = true;
-      enableFishIntegration = config.tvr.shell.fish.enable;
-    };
+
   };
 
 }

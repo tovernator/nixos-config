@@ -1,34 +1,43 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
-  stateVersion,
-  hostName,
   ...
 }:
 
+with lib;
+let
+
+  cfg = config.tvr.system;
+in
 {
   imports = [
     ./audio.nix
     ./boot.nix
     ./desktop.nix
-    ./fonts.nix
+    ./input.nix
     ./locale.nix
     ./network.nix
     ./security.nix
-    ./udev.nix
+
   ];
 
   options = {
+    tvr.system = {
 
+    };
   };
 
   config = {
+
     nix.settings = {
       experimental-features = [
         "nix-command"
         "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
       ];
     };
 

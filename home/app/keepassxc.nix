@@ -7,7 +7,8 @@
 
 with lib;
 let
-  cfg = config.tvr.apps.udiskie;
+
+  cfg = config.tvr.app.keepassxc;
 in
 {
   imports = [
@@ -15,7 +16,7 @@ in
   ];
 
   options = {
-    tvr.apps.udiskie = {
+    tvr.app.keepassxc = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -23,8 +24,10 @@ in
     };
   };
 
-  config = {
-    services.udiskie = {} // (if cfg.enable then { enable = true; } else {});
+  config = mkIf cfg.enable {
+    programs.keepassxc = {
+      enable = true;
+    };
   };
 
 }

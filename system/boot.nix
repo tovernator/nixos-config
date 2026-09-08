@@ -5,30 +5,40 @@
   ...
 }:
 
+with lib;
+let
+
+  cfg = config.tvr.system.boot;
+in
 {
   imports = [
 
   ];
 
   options = {
-    tvr.system.boot.enableDualBoot = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
+    tvr.system.boot = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+      };
+
+      enableDualBoot = mkOption {
+        type = types.bool;
+        default = true;
+      };
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     boot.loader = {
-
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
-
       grub = {
         enable = true;
         efiSupport = true;
-        useOSProber = config.tvr.system.boot.enableDualBoot;
+        useOSProber = cfg.enableDualBoot;
         device = "nodev";
       };
     };

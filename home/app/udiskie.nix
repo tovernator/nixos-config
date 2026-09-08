@@ -7,13 +7,15 @@
 
 with lib;
 let
-  cfg = config.tvr.shell.eza;
+  cfg = config.tvr.app.udiskie;
 in
 {
-  imports = [ ];
+  imports = [
+
+  ];
 
   options = {
-    tvr.shell.eza = {
+    tvr.app.udiskie = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -22,9 +24,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.eza = {
+    services.udiskie = {
       enable = true;
-      enableFishIntegration = config.tvr.shell.fish.enable;
     };
   };
 

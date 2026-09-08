@@ -7,67 +7,57 @@
 
 with lib;
 let
-  cfg = config.tvr.shell;
+  cfg = config.tvr.shell.git;
 
 in
 {
   imports = [ ];
 
   options = {
-    tvr.shell = {
+    tvr.shell.git = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
 
-      git = {
-        enable = mkOption {
-          type = types.bool;
-          default = false;
-        };
+      enableLazyGit = mkOption {
+        type = types.bool;
+        default = false;
+      };
 
-        enableLazyGit = mkOption {
-          type = types.bool;
-          default = false;
-        };
+      userName = mkOption {
+        type = types.str;
+        default = "";
+      };
 
-        userName = mkOption {
-          type = types.str;
-          default = "";
-        };
+      userEmail = mkOption {
+        type = types.str;
+        default = "";
+      };
 
-        userEmail = mkOption {
-          type = types.str;
-          default = "";
-        };
-
-        defaultBranch = mkOption {
-          type = types.str;
-          default = "";
-        };
+      defaultBranch = mkOption {
+        type = types.str;
+        default = "";
       };
     };
+
   };
 
-  config = {
-    programs.git =
-      { }
-      // (
-        if cfg.git.enable then
-          {
-            enable = true;
-            settings = {
-              user = {
-                name = cfg.git.userName;
-                email = cfg.git.userEmail;
-              };
-              init.defaultBranch = cfg.git.defaultBranch;
-              merge.ours.driver = true;
-            };
+  config = mkIf cfg.enable {
+    programs.git = {
+      enable = true;
+      settings = {
+        user = {
+          name = cfg.userName;
+          email = cfg.userEmail;
+        };
+        init.defaultBranch = cfg.defaultBranch;
+        merge.ours.driver = true;
+      };
 
-          }
-        else
-          { }
-      );
+    };
 
-    programs.lazygit =
-      { } // (if cfg.git.enableLazyGit && cfg.git.enable then { enable = true; } else { });
+    programs.lazygit = { } // (if cfg.enableLazyGit then { enable = true; } else { });
 
   };
 

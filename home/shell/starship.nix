@@ -7,39 +7,33 @@
 
 with lib;
 let
-  cfg = config.tvr.shell;
-  opt = tvr.shell;
+  cfg = config.tvr.shell.starship;
+
 in
 {
   imports = [ ];
 
   options = {
-    tvr.shell = {
-      starship.enable = mkOption {
+    tvr.shell.starship = {
+      enable = mkOption {
         type = types.bool;
         default = false;
       };
 
-      starship.preset = mkOption {
+      preset = mkOption {
         type = types.str;
         default = "jetpack";
       };
     };
+
   };
 
-  config = {
-    programs.starship =
-      { }
-      // (
-        if cfg.starship.enable then
-          {
-            enable = true;
-            enableFishIntegration = cfg.fish.enable;
-            presets = [ cfg.starship.preset ];
-          }
-        else
-          { }
-      );
+  config = mkIf cfg.enable {
+    programs.starship = {
+      enable = true;
+      enableFishIntegration = config.tvr.shell.fish.enable;
+      presets = [ cfg.preset ];
+    };
   };
 
 }

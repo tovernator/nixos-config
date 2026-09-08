@@ -1,12 +1,16 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
-  defaultUsername,
-  inputs,
   ...
 }:
 
+with lib;
+let
+
+  cfg = config.tvr.system.desktop;
+in
 {
   imports = [
     inputs.niri.nixosModules.niri
@@ -15,23 +19,64 @@
   ];
 
   options = {
-    tvr.system.desktop.greeter.passwordlessSync = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
+    tvr.system.desktop = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+      };
+
+      enableDesktopServices = mkOption {
+        type = types.bool;
+        default = true;
+      };
+
     };
-
-
   };
 
-  config = {
-    programs = {
+  config = mkIf cfg.enable {
 
+    environment.systemPackages = with pkgs; [
+      niri
+      noctalia-greeter
+    ];
+
+    fonts = {
+      packages = with pkgs; [
+        material-design-icons
+
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-color-emoji
+
+        nerd-fonts.symbols-only
+        nerd-fonts.fira-code
+        nerd-fonts.jetbrains-mono
+      ];
+
+      enableDefaultPackages = false;
+
+      fontconfig.defaultFonts = {
+        serif = [
+          "Noto Serif"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [
+          "Noto Sans"
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "JetBrainsMono Nerd Font"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+    };
+
+    programs = {
       niri = {
         enable = true;
         package = pkgs.niri;
       };
-
-
       noctalia-greeter = {
         enable = true;
         package = pkgs.noctalia-greeter;
@@ -43,20 +88,20 @@
       };
 
     };
-
     services = {
-      udisks2.enable = true;
-      gnome.gnome-keyring.enable = true;
-      upower.enable = true;
-      power-profiles-daemon.enable = true;
-    };
 
-    environment.systemPackages = with pkgs; [
-      niri
-      noctalia-greeter
-      libsecret
+    }
+    // (
+      if cfg.enableDesktopServices then
+        {
+          udisks2.enable = true;
+          upower.enable = true;
+          tuned.enable = true;
+        }
+      else
+        { }
+    );
 
-    ];
   };
 
 }

@@ -7,7 +7,7 @@
 
 {
   imports = [
-    ./apps
+    ./app
     ./niri
     ./noctalia
     ./shell

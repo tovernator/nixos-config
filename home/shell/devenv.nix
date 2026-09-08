@@ -7,7 +7,8 @@
 
 with lib;
 let
-  cfg = config.tvr.apps.rclone;
+
+  cfg = config.tvr.shell.devenv;
 in
 {
   imports = [
@@ -15,7 +16,7 @@ in
   ];
 
   options = {
-    tvr.apps.rclone = {
+    tvr.shell.devenv = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -23,8 +24,8 @@ in
     };
   };
 
-  config = {
-    home.packages = with pkgs; [ ] ++ (if cfg.enable then [ "rclone" ] else [ ]);
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ devenv ];
   };
 
 }

@@ -11,6 +11,7 @@
     ./discord.nix
     ./firefox.nix
     ./keepassxc.nix
+     ./nautilus.nix
     ./rclone.nix
     ./udiskie.nix
     ./zed.nix

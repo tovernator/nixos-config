@@ -7,19 +7,20 @@
 
 with lib;
 let
-  cfg = config.tvr.shell.zellij;
 
+  cfg = config.tvr.app.discord;
 in
 {
-  imports = [ ];
+  imports = [
+
+  ];
 
   options = {
-    tvr.shell.zellij = {
+    tvr.app.discord = {
       enable = mkOption {
         type = types.bool;
         default = false;
       };
-
       useNoctaliaTheme = mkOption {
         type = types.bool;
         default = false;
@@ -28,14 +29,12 @@ in
 
   };
 
-  config = {
-    programs.zellij = {
+  config = mkIf cfg.enable {
+    programs.equibop = {
       enable = true;
-      enableFishIntegration = config.tvr.shell.fish.enable;
-      settings = {
-        theme = (if cfg.useNoctaliaTheme then "noctalia" else "");
-        show_startup_tips = false;
-      };
+      equicord.settings =
+        { }
+        // (if cfg.useNoctaliaTheme then { enabledThemes = [ "noctalia-material.theme.css" ]; } else { });
     };
   };
 

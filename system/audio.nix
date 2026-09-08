@@ -5,37 +5,50 @@
   ...
 }:
 
+with lib;
+let
+
+  cfg = config.tvr.systen.audio;
+in
 {
   imports = [
 
   ];
 
   options = {
-    tvr.system.audio.alsa.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    tvr.system.audio.pulse.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    tvr.system.audio.jack.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
+    tvr.systen.audio = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+      };
+
+      alsa.enable = lib.mkOption {
+        type = types.bool;
+        default = true;
+      };
+      pulse.enable = lib.mkOption {
+        type = types.bool;
+        default = true;
+      };
+      jack.enable = lib.mkOption {
+        type = types.bool;
+        default = true;
+      };
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     services = {
       pipewire = {
         enable = true;
-        alsa.enable = config.tvr.system.audio.alsa.enable;
+        alsa.enable = cfg.alsa.enable;
         alsa.support32Bit = true;
-        pulse.enable = config.tvr.system.audio.pulse.enable;
-        jack.enable = config.tvr.system.audio.jack.enable;
+        pulse.enable = cfg.pulse.enable;
+        jack.enable = cfg.jack.enable;
       };
       pulseaudio.enable = false;
     };
-    environment.systemPackages = with pkgs; [ pulseaudio ];
+    environment.systemPackages = with pkgs; [ ] ++ (if cfg.pulse.enable then [ pulseaudio ] else [ ]);
   };
+
 }
