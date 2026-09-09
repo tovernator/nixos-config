@@ -22,12 +22,14 @@
     home.username = "${defaultUsername}";
     home.homeDirectory = "/home/${defaultUsername}";
     xdg.userDirs.enable = true;
+    xdg.userDirs.createDirectories = true;
 
     tvr.shell.fish.enable = true;
     tvr.shell.helix.enable = true;
     tvr.shell.starship.enable = true;
     tvr.shell.zellij.enable = true;
     tvr.shell.nix.enable = true;
+    tvr.shell.devenv.enable = true;
 
     tvr.shell.git.enable = true;
     tvr.shell.git.userName = gitUser;
@@ -42,6 +44,9 @@
     tvr.app.discord.enable = true;
     tvr.app.nautilus.enable = true;
 
+    tvr.app.keepassxc.enable = true;
+    tvr.app.rclone.enable = true;
+    
     tvr.app.alacritty.useNoctaliaTheme = true;
     tvr.shell.helix.useNoctaliaTheme = true;
     tvr.shell.zellij.useNoctaliaTheme = true;

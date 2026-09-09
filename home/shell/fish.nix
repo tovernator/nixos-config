@@ -38,46 +38,40 @@ in
           ""
       );
 
-      functions =
-        { }
-        // (
-          if config.tvr.app.keepassxc.enable && config.tvr.app.rclone.enable then
-            {
+      functions = mkIf (config.tvr.app.keepassxc.enable && config.tvr.app.rclone.enable) {
+        sync_data = {
+          body = ''
 
-            }
-          else
-            {
-              sync_data = ''
-                function sync_data
-                    if test ! -d $HOME/.data
-                        mkdir -p $HOME/.data
-                    end
-                    if test (count $HOME/.data/* ) -eq 0
-                        echo "directory empty"
-                        rclone bisync --password-command "secret-tool lookup rclone default" $HOME/.data base:/data --create-empty-src-dirs --compare size,modtime,checksum --slow-hash-sync-only --resilient -MvP --drive-skip-gdocs --fix-case --resync
-                    else
-                        echo "directory not empty"
-                        rclone bisync --password-command "secret-tool lookup rclone default" $HOME/.data base:/data --create-empty-src-dirs --compare size,modtime,checksum --slow-hash-sync-only --resilient -MvP --drive-skip-gdocs --fix-case
-                    end
-                end
-              '';
+            if test ! -d $HOME/.data
+                mkdir -p $HOME/.data
+            end
+            if test (count $HOME/.data/* ) -eq 0
+                echo "directory empty"
+                rclone bisync --password-command "secret-tool lookup rclone default" $HOME/.data base:/data --create-empty-src-dirs --compare size,modtime,checksum --slow-hash-sync-only --resilient -MvP --drive-skip-gdocs --fix-case --resync
+            else
+                echo "directory not empty"
+                rclone bisync --password-command "secret-tool lookup rclone default" $HOME/.data base:/data --create-empty-src-dirs --compare size,modtime,checksum --slow-hash-sync-only --resilient -MvP --drive-skip-gdocs --fix-case
+            end
 
-              mount_remote = ''
-                function mount_remote
-                    mkdir -p $HOME/Drive
-                    rclone mount --password-command "secret-tool lookup rclone default" --buffer-size 512m --dir-cache-time 72h --vfs-cache-mode writes --daemon base:/files $HOME/Drive
-                end
-              '';
+          '';
+        };
 
-              password_manager = ''
-                function password_manager -a PWDB
-                    sync_data 1>/dev/null
-                    secret-tool lookup keepass $PWDB | keepassxc --pw-stdin "$HOME/.data/$PWDB.kdbx" 2>/dev/null 1>/dev/null &
-                end
-              '';
+        mount_remote = {
+          body = ''
+            rclone mount --password-command "secret-tool lookup rclone default" --buffer-size 512m --dir-cache-time 72h --vfs-cache-mode writes --daemon base:/files $HOME/Cloud
+          '';
+        };
 
-            }
-        );
+        password_manager = {
+          argumentNames = [ "PWDB" ];
+          body = ''
+            sync_data 1>/dev/null
+            secret-tool lookup keepass $PWDB | keepassxc --pw-stdin "$HOME/.data/$PWDB.kdbx" 2>/dev/null 1>/dev/null &
+          '';
+        };
+
+      };
+
     };
 
   };

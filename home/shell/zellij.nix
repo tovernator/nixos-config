@@ -28,7 +28,7 @@ in
 
   };
 
-  config = {
+  config = mkIf cfg.enable {
     programs.zellij = {
       enable = true;
       enableFishIntegration = config.tvr.shell.fish.enable;
