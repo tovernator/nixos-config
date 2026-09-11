@@ -21,7 +21,6 @@ in
         type = types.bool;
         default = false;
       };
-
     };
   };
 

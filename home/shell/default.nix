@@ -10,6 +10,7 @@
     ./bat.nix
     ./devenv.nix
     ./eza.nix
+    ./fd.nix
     ./fish.nix
     ./git.nix
     ./helix.nix

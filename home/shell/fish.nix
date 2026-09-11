@@ -29,14 +29,23 @@ in
   config = mkIf cfg.enable {
     programs.fish = {
       enable = true;
-      interactiveShellInit = (
-        if cfg.disableGreeter then
-          ''
-            set fish_greeting # Disable greeting
-          ''
-        else
-          ""
-      );
+      interactiveShellInit =
+        (
+          if cfg.disableGreeter then
+            ''
+              set fish_greeting # Disable greeting
+            ''
+          else
+            ""
+        )
+        + (
+          if config.tvr.shell.fd.enable then
+            ''
+              alias find fd
+            ''
+          else
+            ""
+        );
 
       functions = mkIf (config.tvr.app.keepassxc.enable && config.tvr.app.rclone.enable) {
         sync_data = {

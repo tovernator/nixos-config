@@ -1,16 +1,11 @@
 {
-  description = "A very basic flake";
+  description = "Personal Nixos Config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,6 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    umbriel = {
+      url = "git+https://github.com/noctalia-dev/umbriel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -31,15 +30,16 @@
       self,
       nixpkgs,
       home-manager,
-      niri,
       noctalia-greeter,
+      umbriel,
       ...
     }:
     let
       system = "x86_64-linux";
       stateVersion = "26.05";
-      hostName = "nixos";
+      hostName = "battlestation";
       defaultUsername = "cutie";
+      defaultPassword = "cutie";
 
       gitUser = "";
       gitEmail = "";
@@ -55,6 +55,7 @@
             inherit hostName;
             inherit stateVersion;
             inherit defaultUsername;
+            inherit defaultPassword;
           };
 
           modules = [

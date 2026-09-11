@@ -27,15 +27,19 @@
 
     tvr.theme.enable = true;
 
+    tvr.shell.bat.enable = true;
+    tvr.shell.devenv.enable = true;
+    tvr.shell.eza.enable = true;
+    tvr.shell.fd.enable = true;
     tvr.shell.fish.enable = true;
+    tvr.shell.git.enable = true;
     tvr.shell.helix.enable = true;
+    tvr.shell.nix.enable = true;
     tvr.shell.starship.enable = true;
     tvr.shell.zellij.enable = true;
-    tvr.shell.nix.enable = true;
-    tvr.shell.devenv.enable = true;
 
-    tvr.app.zed.enable = true;
     tvr.app.alacritty.enable = true;
+    tvr.app.zed.enable = true;
     tvr.app.firefox.enable = true;
     tvr.app.udiskie.enable = true;
     tvr.app.discord.enable = true;
@@ -44,7 +48,6 @@
     tvr.app.keepassxc.enable = true;
     tvr.app.rclone.enable = true;
 
-    tvr.shell.git.enable = true;
     tvr.shell.git.userName = gitUser;
     tvr.shell.git.userEmail = gitEmail;
     tvr.shell.git.enableLazyGit = true;

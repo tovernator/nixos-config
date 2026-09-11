@@ -8,7 +8,7 @@
 with lib;
 let
 
-  cfg = config.TEMPLATE;
+  cfg = config.tvr.shell.fd;
 in
 {
   imports = [
@@ -16,7 +16,7 @@ in
   ];
 
   options = {
-    TEMPLATE = {
+    tvr.shell.fd = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -25,7 +25,7 @@ in
   };
 
   config = mkIf cfg.enable {
-
+    programs.fd.enable = true;
   };
 
 }

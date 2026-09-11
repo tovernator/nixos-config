@@ -13,8 +13,9 @@ let
 in
 {
   imports = [
-    inputs.niri.nixosModules.niri
+
     inputs.noctalia-greeter.nixosModules.default
+    inputs.umbriel.nixosModules.default
     inputs.noctalia.nixosModules.default
   ];
 
@@ -36,7 +37,6 @@ in
   config = mkIf cfg.enable {
 
     environment.systemPackages = with pkgs; [
-      niri
       noctalia-greeter
     ];
 
@@ -73,10 +73,7 @@ in
     };
 
     programs = {
-      niri = {
-        enable = true;
-        package = pkgs.niri;
-      };
+      umbriel.enable = true;
       noctalia-greeter = {
         enable = true;
         package = pkgs.noctalia-greeter;
@@ -88,19 +85,11 @@ in
       };
 
     };
-    services = {
-
-    }
-    // (
-      if cfg.enableDesktopServices then
-        {
-          udisks2.enable = true;
-          upower.enable = true;
-          tuned.enable = true;
-        }
-      else
-        { }
-    );
+    services = mkIf cfg.enableDesktopServices {
+      udisks2.enable = true;
+      upower.enable = true;
+      tuned.enable = true;
+    };
 
   };
 

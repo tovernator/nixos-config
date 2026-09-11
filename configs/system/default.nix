@@ -1,8 +1,7 @@
 {
-  config,
-  lib,
-  pkgs,
+
   defaultUsername,
+  defaultPassword,
   hostName,
   stateVersion,
   ...
@@ -25,13 +24,12 @@
     users.users.${defaultUsername} = {
       isNormalUser = true;
       description = "${defaultUsername}";
-      initialPassword = "cutie";
+      initialPassword = "${defaultPassword}";
 
       extraGroups = [
         "networkmanager"
         "wheel"
         "video"
-
       ];
     };
   };

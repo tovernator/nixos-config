@@ -1,19 +1,17 @@
 {
-  config,
+
   lib,
-  pkgs,
+
   ...
 }:
 with lib;
-let
 
-  cfg = config.tvr.theme;
-in
 {
   imports = [
     ./app
-    ./niri
-    ./noctalia
+    # ./niri
+    # ./noctalia
+    ./desktop
     ./shell
   ];
 
