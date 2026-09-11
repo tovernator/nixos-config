@@ -31,8 +31,9 @@ in
       enable = true;
       settings = {
         general = {
-          autostart = [ "noctalia" ];
+          autostart = [ ];
           xwayland = true;
+          show_cheatsheet = false;
         };
         include.optional.files = ["noctalia.toml"];
 

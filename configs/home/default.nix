@@ -48,6 +48,8 @@
     tvr.app.keepassxc.enable = true;
     tvr.app.rclone.enable = true;
 
+
+
     tvr.shell.git.userName = gitUser;
     tvr.shell.git.userEmail = gitEmail;
     tvr.shell.git.enableLazyGit = true;

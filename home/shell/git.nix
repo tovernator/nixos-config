@@ -9,6 +9,8 @@ with lib;
 let
   cfg = config.tvr.shell.git;
 
+
+
 in
 {
   imports = [ ];
@@ -57,7 +59,9 @@ in
 
     };
 
-    programs.lazygit = { } // (if cfg.enableLazyGit then { enable = true; } else { });
+    programs.lazygit = mkIf cfg.enableLazyGit { enable = true;
+
+    };
 
   };
 

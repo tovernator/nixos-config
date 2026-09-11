@@ -9,10 +9,9 @@ with lib;
 {
   imports = [
     ./app
-    # ./niri
-    # ./noctalia
     ./desktop
     ./shell
+
   ];
 
   options = {

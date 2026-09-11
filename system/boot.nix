@@ -30,16 +30,22 @@ in
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [ ] ++ (if cfg.enableDualBoot then [os-prober] else "");
     boot.loader = {
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
-      grub = {
+      # grub = {
+      #   enable = true;
+      #   efiSupport = true;
+      #   useOSProber = cfg.enableDualBoot;
+      #   device = "nodev";
+      # };
+      limine = {
         enable = true;
         efiSupport = true;
-        useOSProber = cfg.enableDualBoot;
-        device = "nodev";
+        extraConfig = "" + (if cfg.enableDualBoot then ''osdiscovery'' else "");
       };
     };
   };

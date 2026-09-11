@@ -29,6 +29,7 @@ in
   };
 
   config = mkIf cfg.enable {
+
     programs.noctalia = {
       enable = true;
       package = pkgs.noctalia;
@@ -65,6 +66,7 @@ in
               "gtk3"
               "gtk4"
               "qt"
+
             ]
 
             ++ (if shell.helix.enable then [ "helix" ] else [ ])
@@ -72,6 +74,7 @@ in
             ++ (if app.alacritty.enable then [ "alacritty" ] else [ ]);
 
             community_ids = [
+              "papirus-icons"
             ]
             ++ (if shell.zellij.enable then [ "zellij" ] else [ ])
             ++ (if shell.bat.enable then [ "bat" ] else [ ])
@@ -287,7 +290,17 @@ in
 
     };
 
-    home.packages = with pkgs; [ noctalia ];
+    home.sessionVariables = mkIf useTheme {
+      QT_QPA_PLATFORMTHEME = "qt6ct";
+    };
+
+    dconf.settings = mkIf useTheme {
+      "org/gnome/desktop/interface" = {
+        gtk-theme = "adw-gtk3";
+      };
+    };
+
+    home.packages = with pkgs; [ noctalia adw-gtk3 ] ++ (if useTheme then [adw-gtk3 kdePackages.qt6ct] else []);
 
   };
 

@@ -51,9 +51,12 @@ in
         nerd-fonts.symbols-only
         nerd-fonts.fira-code
         nerd-fonts.jetbrains-mono
+        papirus-icon-theme
       ];
 
       enableDefaultPackages = false;
+      fontDir.enable = true;
+      fontconfig.enable = true;
 
       fontconfig.defaultFonts = {
         serif = [
