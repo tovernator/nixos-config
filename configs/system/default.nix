@@ -3,6 +3,7 @@
   defaultUsername,
   defaultPassword,
   hostName,
+  config,
   stateVersion,
   ...
 }:
@@ -17,9 +18,12 @@
   };
 
   config = {
-
+    tvr.system.gpu.enable = true;
+    tvr.system.steam.enable = true;
     networking.hostName = hostName;
     system.stateVersion = stateVersion;
+
+
 
     users.users.${defaultUsername} = {
       isNormalUser = true;

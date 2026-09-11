@@ -39,8 +39,9 @@
     tvr.shell.starship.enable = true;
     tvr.shell.zellij.enable = true;
 
-    tvr.app.alacritty.enable = true;
 
+
+    tvr.app.alacritty.enable = true;
     tvr.app.discord.enable = true;
     tvr.app.firefox.enable = true;
     tvr.app.keepassxc.enable = true;
@@ -49,9 +50,6 @@
     tvr.app.udiskie.enable = true;
     tvr.app.rclone.enable = true;
     tvr.app.zed.enable = true;
-
-
-
 
     tvr.shell.git.userName = gitUser;
     tvr.shell.git.userEmail = gitEmail;

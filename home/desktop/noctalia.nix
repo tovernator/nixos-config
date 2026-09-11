@@ -12,6 +12,7 @@ let
   cfg = config.tvr.desktop.noctalia;
   app = config.tvr.app;
   shell = config.tvr.shell;
+  game = config.tvr.game;
   useTheme = config.tvr.theme.enable;
 in
 {
@@ -81,6 +82,7 @@ in
             ++ (if app.zed.enable then [ "zed" ] else [ ])
             ++ (if app.discord.enable then [ "discord" ] else [ ])
             ++ (if app.obsidian.enable then [ "obsidian" ] else [ ])
+            ++ (if game.prismlauncher.enable then [ "prismlauncher" ] else [ ])
             ++ (if app.firefox.enable then [ "pywalfox-beta4" ] else [ ]);
           };
         };

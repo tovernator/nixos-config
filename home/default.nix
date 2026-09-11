@@ -10,6 +10,7 @@ with lib;
   imports = [
     ./app
     ./desktop
+    ./game
     ./shell
 
   ];

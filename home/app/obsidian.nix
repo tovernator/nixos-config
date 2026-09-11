@@ -35,6 +35,10 @@ in
         # themes."noctalia" = mkIf useTheme {
         #   enable = true;
         # };
+        #
+        appearance = {
+
+        };
       };
       vaults = {
         documents = {

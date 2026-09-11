@@ -15,10 +15,12 @@ in
     ./audio.nix
     ./boot.nix
     ./desktop.nix
+    ./gpu.nix
     ./input.nix
     ./locale.nix
     ./network.nix
     ./security.nix
+    ./steam.nix
 
   ];
 

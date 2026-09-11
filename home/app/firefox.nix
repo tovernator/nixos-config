@@ -75,6 +75,7 @@ in
 
               "pywalfox@frewacom.org" = mkIf useTheme {
                  fetchOnStartup = true;
+                 duckduckgo = true;
               };
 
               "uBlock0@raymondhill.net" = mkIf cfg.enableAdBlock {
