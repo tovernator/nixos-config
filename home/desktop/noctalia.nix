@@ -83,7 +83,8 @@ in
             ++ (if app.discord.enable then [ "discord" ] else [ ])
             ++ (if app.obsidian.enable then [ "obsidian" ] else [ ])
             ++ (if game.prismlauncher.enable then [ "prismlauncher" ] else [ ])
-            ++ (if app.firefox.enable then [ "pywalfox-beta4" ] else [ ]);
+            ++ (if app.firefox.enable then [ "zathura" ] else [ ])
+          ++ (if app.firefox.enable then [ "pywalfox-beta4" ] else [ ]);
           };
         };
         widget = {

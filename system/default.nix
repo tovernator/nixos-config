@@ -20,8 +20,6 @@ in
     ./locale.nix
     ./network.nix
     ./security.nix
-    ./steam.nix
-
   ];
 
   options = {

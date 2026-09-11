@@ -8,7 +8,7 @@
 {
   imports = [
     ./prismlauncher.nix
-    ./steam.nix
+
   ];
 
   options = {

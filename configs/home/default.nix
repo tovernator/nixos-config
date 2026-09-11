@@ -49,6 +49,7 @@
     tvr.app.obsidian.enable = true;
     tvr.app.udiskie.enable = true;
     tvr.app.rclone.enable = true;
+    tvr.app.zathura.enable = true;
     tvr.app.zed.enable = true;
 
     tvr.shell.git.userName = gitUser;

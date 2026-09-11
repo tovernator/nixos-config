@@ -16,6 +16,7 @@
     ./obsidian.nix
     ./rclone.nix
     ./udiskie.nix
+    ./zathura.nix
     ./zed.nix
   ];
 
