@@ -31,11 +31,11 @@ in
       enable = true;
       settings = {
         general = {
-          autostart = [ ];
+          autostart = [ "noctalia" ];
           xwayland = true;
           show_cheatsheet = false;
         };
-        include.optional.files = ["noctalia.toml"];
+        include.optional.files = ["noctalia.toml" "outputs.toml"];
 
         appearance = {
           prefer_no_csd = true;
@@ -52,6 +52,7 @@ in
           "Mod+Z" = "spawn:noctalia msg panel-toggle launcher /emo";
           "Mod+V" = "spawn:noctalia msg panel-toggle clipboard";
           "Mod+W" = "spawn:noctalia msg panel-toggle wallpaper";
+          "Mod+Shift+W" = "spawn:noctalia msg panel-toggle noctalia/wallhaven:browser" ;
           "Mod+N" = "spawn:noctalia msg panel-toggle noctalia/notes:panel";
           "Mod+X" = "spawn:noctalia msg bar-toggle";
           "Mod+P" = "spawn:noctalia msg screenshot-region";
@@ -65,7 +66,7 @@ in
           "Mod+Shift+P" = "spawn:noctalia msg screenshot-fullscreen";
           "Mod+Shift+A" = "spawn:noctalia msg screenshot-annotate";
           "Mod+Ctrl+A" = "spawn:noctalia msg annotate";
-          "Mod+Shift+W" = "spawn:noctalia msg desktop-widgets-toggle-edit";
+          "Mod+Ctrl+W" = "spawn:noctalia msg desktop-widgets-toggle-edit";
           "Mod+Escape" = "spawn:noctalia msg panel-toggle session";
 
           "XF86AudioRaiseVolume"  = "spawn:noctalia msg volume-up";

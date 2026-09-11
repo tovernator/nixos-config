@@ -36,17 +36,18 @@ in
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
-      # grub = {
-      #   enable = true;
-      #   efiSupport = true;
-      #   useOSProber = cfg.enableDualBoot;
-      #   device = "nodev";
-      # };
-      limine = {
+      grub = {
         enable = true;
         efiSupport = true;
-        extraConfig = "" + (if cfg.enableDualBoot then ''osdiscovery'' else "");
+        useOSProber = cfg.enableDualBoot;
+        # efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system 
+        device = "nodev";
       };
+      # limine = {
+      #   enable = true;
+      #   efiSupport = true;
+      #   extraConfig = "" + (if cfg.enableDualBoot then ''osdiscovery'' else "");
+      # };
     };
   };
 

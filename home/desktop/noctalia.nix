@@ -80,7 +80,8 @@ in
             ++ (if shell.bat.enable then [ "bat" ] else [ ])
             ++ (if app.zed.enable then [ "zed" ] else [ ])
             ++ (if app.discord.enable then [ "discord" ] else [ ])
-            ++ (if app.obsidian.enable then [ "obsidian" ] else [ ]);
+            ++ (if app.obsidian.enable then [ "obsidian" ] else [ ])
+            ++ (if app.firefox.enable then [ "pywalfox-beta4" ] else [ ]);
           };
         };
         widget = {
@@ -91,10 +92,15 @@ in
 
           disks = {
             type = "aristides/udiskie:status";
+            show_count = false;
           };
 
-          umbriel = {
+          companion = {
             type = "noctalia/umbriel-companion:bar";
+          };
+
+          displays = {
+             type = "prponkshe/umbriel-displays:bar";
           };
 
           privacy = {
@@ -131,10 +137,8 @@ in
 
           procmon = {
             type = "weinguyen/procmon:widget";
-          };
-
-          displays = {
-            type = "raycursive/niri-displays:bar";
+            icon_only = true;
+            show_count = false;
           };
 
           audio-switcher = {
@@ -165,6 +169,7 @@ in
             "blackbartblues/audio-switcher"
             "aristides/udiskie"
             "noctalia/umbriel-companion"
+            "prponkshe/umbriel-displays"
           ];
 
         };
@@ -175,14 +180,23 @@ in
           };
 
           "weinguyen/procmon" = {
-            panel_open_near_click = false;
+            panel_open_near_click = true;
             panel_placement = "floating";
             panel_position = "auto";
           };
 
+          "noctalia/umbriel-companion" = {
+             panel_placement = "floating";
+          };
           "blackbartblues/audio-switcher" = {
             show_percentage = false;
             audio-switcher_open_near_click = false;
+          };
+          "prponkshe/umbriel-displays" = {
+            panel_placement = "floating";
+          };
+          "aristides/udiskie"= {
+            manager_open_near_click = true;
           };
         };
         bar = {
@@ -242,7 +256,6 @@ in
                 members = [
                   "launcher"
                   "control-center"
-                  "umbriel"
                 ];
               }
             ];
@@ -262,6 +275,8 @@ in
             start = [
               "procmon"
               "disks"
+              "displays"
+              "companion"
             ];
             center = [ ];
             end = [

@@ -14,6 +14,7 @@
     ./fish.nix
     ./git.nix
     ./helix.nix
+    ./protonvpn.nix
     ./nix.nix
     ./starship.nix
     ./zellij.nix

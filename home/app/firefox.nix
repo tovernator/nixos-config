@@ -8,6 +8,7 @@
 with lib;
 let
   cfg = config.tvr.app.firefox;
+  useTheme = config.tvr.theme.enable;
 in
 {
   imports = [
@@ -64,7 +65,18 @@ in
               updates_disabled = true;
             };
 
+            "pywalfox@frewacom.org" = mkIf useTheme {
+              install_url = moz "pywalfox";
+              installation_mode = "force_installed";
+              updates_disabled = true;
+            };
+
             "3rdparty".Extensions = {
+
+              "pywalfox@frewacom.org" = mkIf useTheme {
+                 fetchOnStartup = true;
+              };
+
               "uBlock0@raymondhill.net" = mkIf cfg.enableAdBlock {
                 adminSettings = {
                   userSettings = rec {

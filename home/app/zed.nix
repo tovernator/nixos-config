@@ -43,8 +43,8 @@ in
           if useTheme then
             {
               mode = "system";
-              dark = "Noctalia Dark Transparent";
-              light = "Noctalia Light Transparent";
+              dark = "Noctalia Dark";
+              light = "Noctalia Light";
             }
           else
             {
