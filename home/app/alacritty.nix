@@ -8,6 +8,7 @@
 with lib;
 let
   cfg = config.tvr.app.alacritty;
+  useTheme = config.tvr.theme.enable;
 in
 {
   imports = [
@@ -21,10 +22,6 @@ in
         default = false;
       };
 
-      useNoctaliaTheme = mkOption {
-        type = types.bool;
-        default = false;
-      };
     };
   };
 
@@ -39,12 +36,7 @@ in
           dynamic_padding = true;
         };
       }
-      // (
-        if cfg.useNoctaliaTheme then
-          { general.import = [ "~/.config/alacritty/themes/noctalia.toml" ]; }
-        else
-          { }
-      );
+      // (if useTheme then { general.import = [ "~/.config/alacritty/themes/noctalia.toml" ]; } else { });
     };
   };
 }

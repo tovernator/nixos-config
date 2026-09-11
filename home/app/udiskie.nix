@@ -26,7 +26,11 @@ in
   config = mkIf cfg.enable {
     services.udiskie = {
       enable = true;
+      package = pkgs.udiskie;
     };
+
+
+    home.packages = with pkgs; [udiskie];
   };
 
 }

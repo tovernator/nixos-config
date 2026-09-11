@@ -8,6 +8,7 @@
 with lib;
 let
   cfg = config.tvr.shell.helix;
+  useTheme = config.tvr.theme.enable;
 
 in
 {
@@ -32,7 +33,7 @@ in
     programs.helix = {
       enable = true;
       settings = {
-        theme = (if cfg.useNoctaliaTheme then "noctalia" else "");
+        theme = (if useTheme then "noctalia" else "");
       };
     };
   };

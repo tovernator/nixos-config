@@ -8,7 +8,7 @@
 with lib;
 let
   cfg = config.tvr.shell.zellij;
-
+  useTheme = config.tvr.theme.enable;
 in
 {
   imports = [ ];
@@ -33,7 +33,7 @@ in
       enable = true;
       enableFishIntegration = config.tvr.shell.fish.enable;
       settings = {
-        theme = (if cfg.useNoctaliaTheme then "noctalia" else "");
+        theme = (if useTheme then "noctalia" else "");
         show_startup_tips = false;
       };
     };

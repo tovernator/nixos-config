@@ -11,14 +11,19 @@
     ./discord.nix
     ./firefox.nix
     ./keepassxc.nix
-     ./nautilus.nix
+    ./nautilus.nix
+    ./obsidian.nix
     ./rclone.nix
     ./udiskie.nix
     ./zed.nix
   ];
 
-  options = { };
+  options = {
 
-  config = { };
+  };
+
+  config = {
+
+  };
 
 }

@@ -5,6 +5,12 @@
   ...
 }:
 
+with lib;
+let
+  app = config.tvr.app;
+  shell = config.tvr.shell;
+  useTheme = config.tvr.theme.enable;
+in
 {
   imports = [
 
@@ -21,25 +27,23 @@
       source = "wallpaper";
       wallpaper_scheme = "faithful";
 
-      templates = {
+      templates = mkIf useTheme {
         builtin_ids = [
-          "alacritty"
-          "helix"
           "niri"
-          "starship"
           "gtk3"
           "gtk4"
           "qt"
         ]
-        ++ (if config.tvr.shell.helix.enable then [ "helix" ] else [ ])
-        ++ (if config.tvr.shell.starship.enable then [ "starship" ] else [ ])
-        ++ (if config.tvr.app.alacritty.enable then [ "alacritty" ] else [ ]);
+        ++ (if shell.helix.enable then [ "helix" ] else [ ])
+        ++ (if shell.starship.enable then [ "starship" ] else [ ])
+        ++ (if app.alacritty.enable then [ "alacritty" ] else [ ]);
         community_ids = [
         ]
-        ++ (if config.tvr.shell.zellij.enable then [ "zellij" ] else [ ])
-        ++ (if config.tvr.shell.bat.enable then [ "bat" ] else [ ])
-        ++ (if config.tvr.app.zed.enable then [ "zed" ] else [ ])
-        ++ (if config.tvr.app.discord.enable then [ "discord" ] else [ ]);
+        ++ (if shell.zellij.enable then [ "zellij" ] else [ ])
+        ++ (if shell.bat.enable then [ "bat" ] else [ ])
+        ++ (if app.zed.enable then [ "zed" ] else [ ])
+        ++ (if app.discord.enable then [ "discord" ] else [ ])
+        ++ (if app.obsidian.enable then [ "obsidian" ] else [ ]);
       };
 
     };

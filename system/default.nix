@@ -40,6 +40,7 @@ in
         "@wheel"
       ];
     };
+    nixpkgs.config.allowUnfree = true;
 
     programs.bash = (
       if true then

@@ -7,6 +7,7 @@
 
 with lib;
 let
+  useTheme = config.tvr.theme.enable;
   cfg = config.tvr.shell.bat;
 in
 {
@@ -19,11 +20,6 @@ in
         default = false;
       };
 
-      useNoctaliaTheme = mkOption {
-        type = types.bool;
-        default = false;
-      };
-
     };
   };
 
@@ -32,7 +28,7 @@ in
       enable = true;
     }
     // (
-      if cfg.useNoctaliaTheme then
+      if useTheme then
         {
           config.theme = "noctalia";
           themes = {

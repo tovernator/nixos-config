@@ -8,6 +8,7 @@
 with lib;
 let
   cfg = config.tvr.app.zed;
+  useTheme = config.tvr.theme.enable;
 in
 {
   imports = [
@@ -39,7 +40,7 @@ in
       extensions = [ ] ++ (if config.tvr.shell.nix.enable then [ "nix" ] else [ ]) ++ cfg.extensions;
       userSettings = { } // {
         theme = (
-          if cfg.useNoctaliaTheme then
+          if useTheme then
             {
               mode = "system";
               dark = "Noctalia Dark Transparent";

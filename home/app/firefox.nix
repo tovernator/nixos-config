@@ -7,7 +7,6 @@
 
 with lib;
 let
-
   cfg = config.tvr.app.firefox;
 in
 {
@@ -31,6 +30,11 @@ in
         default = false;
       };
 
+      removeBloat = mkOption {
+        type = types.bool;
+        default = true;
+      };
+
       defaultSearchEngine = mkOption {
         type = types.str;
         default = "ddg";
@@ -42,28 +46,27 @@ in
     programs.firefox = {
       enable = true;
       languagePacks = [ "en_US" ];
-      policies =
-        { }
-        // (
-          if cfg.enableAdBlock then
-            {
-              ExtensionSettings =
-                let
-                  moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
-                in
-                {
-                  "*".installation_mode = "blocked";
+      policies = {
+        ExtensionSettings =
+          let
+            moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
+          in
+          {
+            "uBlock0@raymondhill.net" = mkIf cfg.enableAdBlock {
+              install_url = moz "ublock-origin";
+              installation_mode = "force_installed";
+              updates_disabled = true;
+            };
 
-                  "uBlock0@raymondhill.net" = {
-                    install_url = moz "ublock-origin";
-                    installation_mode = "force_installed";
-                    updates_disabled = true;
-                  };
+            "keepassxc-browser@keepassxc.org" = mkIf config.tvr.app.keepassxc.enable {
+              install_url = moz "keepassxc-browser";
+              installation_mode = "force_installed";
+              updates_disabled = true;
+            };
 
-                };
-
-              "3rdparty".Extensions = {
-                "uBlock0@raymondhill.net".adminSettings = {
+            "3rdparty".Extensions = {
+              "uBlock0@raymondhill.net" = mkIf cfg.enableAdBlock {
+                adminSettings = {
                   userSettings = rec {
                     uiTheme = "dark";
                     uiAccentCustom = true;
@@ -98,11 +101,30 @@ in
                   ];
                 };
               };
+            };
+          };
+      }
+      // (
+        if cfg.removeBloat then
+          {
+            SearchEngines = {
+              Remove = [
+                "eBay"
+                "Google"
+                "Bing"
+                "Ecosia"
+                "Wikipedia"
+                "Perplexity"
+                "Qwant"
+                "Startpage"
+              ];
+            };
 
-            }
-          else
-            { }
-        );
+          }
+        else
+          { }
+      );
+
       profiles.default.search = { } // {
         force = true;
         default = "ddg";

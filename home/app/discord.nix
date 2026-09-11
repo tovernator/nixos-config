@@ -7,7 +7,7 @@
 
 with lib;
 let
-
+  useTheme = config.tvr.theme.enable;
   cfg = config.tvr.app.discord;
 in
 {
@@ -21,10 +21,7 @@ in
         type = types.bool;
         default = false;
       };
-      useNoctaliaTheme = mkOption {
-        type = types.bool;
-        default = false;
-      };
+
     };
 
   };
@@ -33,8 +30,7 @@ in
     programs.equibop = {
       enable = true;
       equicord.settings =
-        { }
-        // (if cfg.useNoctaliaTheme then { enabledThemes = [ "noctalia-material.theme.css" ]; } else { });
+        { } // (if useTheme then { enabledThemes = [ "noctalia-material.theme.css" ]; } else { });
     };
   };
 

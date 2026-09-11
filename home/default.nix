@@ -4,7 +4,11 @@
   pkgs,
   ...
 }:
+with lib;
+let
 
+  cfg = config.tvr.theme;
+in
 {
   imports = [
     ./app
@@ -13,7 +17,14 @@
     ./shell
   ];
 
-  options = { };
+  options = {
+    tvr.theme = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+      };
+    };
+  };
 
   config = { };
 
